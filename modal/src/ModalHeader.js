@@ -8,7 +8,7 @@ class ModalHeader extends React.Component {
     render() {
         return(
             <div  className="modal-component">
-                 <h1>{this.props.title}</h1> 
+                 <h1>{this.props.title || "Tu powinien znajdować się tytuł"}</h1> 
                  <button className="modal-button" onClick={this.context.toggle}>
                      Zamknij
                  </button>

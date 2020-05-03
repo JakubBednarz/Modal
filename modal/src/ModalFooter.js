@@ -14,7 +14,7 @@ class ModalFooter extends React.Component {
         return(
             <div className="modal-component modal-footer">
                 <button className="modal-button" onClick={this.context.toggle}>Cancel</button>
-                <button className="modal-button" onClick={this.clickAlert}>{this.props.callToActionLabel}</button>
+                <button className="modal-button" onClick={this.clickAlert}>{this.props.callToActionLabel || "Nazwa przycisku"}</button>
             </div>
         )
     }

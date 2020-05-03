@@ -8,44 +8,48 @@ class Modal extends React.Component {
     constructor (props) {
         super(props);
 
-        this.toggle = () => {
-            this.setState(state => ({
-              isOpen: !state.isOpen
-            }));
-          }
-        
         this.state = {
             isOpen: false,
-            toggle: this.toggle,
         }
+
+        this.toggle = this.toggle.bind(this);
     };
+    static Footer = ModalFooter;
+    static Content = ModalContent;
+    static Header = ModalHeader;
+    static contextType = ModalContext;
+
+    toggle () {
+        this.setState(state => ({
+            isOpen: !state.isOpen
+          }));
+    }
 
     nonClickable(e) {
         e.stopPropagation()
     }
 
-    static contextType = ModalContext;
-
     render () {
-        const displayModal = this.state.isOpen ? "flex" : "none";
-        return (
-            <ModalContext.Provider value={this.state}>
-                <div>
-                    <button className="modal-button" onClick={this.toggle}>
-                        {this.state.isOpen ? 'Close Modal' : 'Open Modal'}
-                    </button>
-                    <div className="modal-background" onClick={this.toggle} style={{display: displayModal}}>
-                        <div className="modal-container" onClick={this.nonClickable} style={{display: displayModal}}>
+        if (this.state.isOpen) {
+            return (
+                <ModalContext.Provider value={{state: this.state, toggle: this.toggle}}>
+                    <div className="modal-background" onClick={this.toggle}>
+                        <div className="modal-container" onClick={this.nonClickable}>
                             {this.props.children}
                         </div>
                     </div>
+                </ModalContext.Provider>
+            )
+        } else {
+            return (
+                <div>
+                    <button className="modal-button" onClick={this.toggle}>
+                        Open Modal
+                    </button>
                 </div>
-            </ModalContext.Provider>
-        )
+            )
+        }
     }
 }
 
-Modal.Footer = ModalFooter;
-Modal.Content = ModalContent;
-Modal.Header = ModalHeader;
 export default Modal

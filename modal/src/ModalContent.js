@@ -8,7 +8,7 @@ class ModalContent extends React.Component {
     render() {
         return(
             <div className="modal-component">
-                 {this.props.children}
+                 {this.props.children || <h1>Tu powinieneś coś wpisać</h1>}
             </div>
         )
     }
