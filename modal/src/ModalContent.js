@@ -7,7 +7,7 @@ class ModalContent extends React.Component {
     
     render() {
         return(
-            <div onClick={this.context.nonClickable} className="modal-component">
+            <div className="modal-component">
                  {this.props.children}
             </div>
         )

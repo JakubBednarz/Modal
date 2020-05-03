@@ -14,16 +14,15 @@ class Modal extends React.Component {
             }));
           }
         
-        this.nonClickable = (e) => {
-            e.stopPropagation()
+        this.state = {
+            isOpen: false,
+            toggle: this.toggle,
         }
-        
-          this.state = {
-              isOpen: false,
-              toggle: this.toggle,
-              nonClickable: this.nonClickable
-          }
     };
+
+    nonClickable(e) {
+        e.stopPropagation()
+    }
 
     static contextType = ModalContext;
 
@@ -35,8 +34,10 @@ class Modal extends React.Component {
                     <button className="modal-button" onClick={this.toggle}>
                         {this.state.isOpen ? 'Close Modal' : 'Open Modal'}
                     </button>
-                    <div className="modal-container" onClick={this.toggle} style={{display: displayModal}}>
-                        {this.props.children}
+                    <div className="modal-background" onClick={this.toggle} style={{display: displayModal}}>
+                        <div className="modal-container" onClick={this.nonClickable} style={{display: displayModal}}>
+                            {this.props.children}
+                        </div>
                     </div>
                 </div>
             </ModalContext.Provider>

@@ -12,7 +12,7 @@ class ModalFooter extends React.Component {
     
     render() {
         return(
-            <div onClick={this.context.nonClickable} className="modal-component modal-footer">
+            <div className="modal-component modal-footer">
                 <button className="modal-button" onClick={this.context.toggle}>Cancel</button>
                 <button className="modal-button" onClick={this.clickAlert}>{this.props.callToActionLabel}</button>
             </div>

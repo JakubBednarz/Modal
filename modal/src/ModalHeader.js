@@ -7,7 +7,7 @@ class ModalHeader extends React.Component {
     
     render() {
         return(
-            <div onClick={this.context.nonClickable} className="modal-component">
+            <div  className="modal-component">
                  <h1>{this.props.title}</h1> 
                  <button className="modal-button" onClick={this.context.toggle}>
                      Zamknij
@@ -17,4 +17,4 @@ class ModalHeader extends React.Component {
     }
 }
 
-export default ModalHeader 
+export default ModalHeader
