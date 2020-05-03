@@ -8,10 +8,6 @@ class ModalFooter extends React.Component {
         this.context.toggle()
     }
 
-    // nonClickable(e) {
-    //     e.stopPropagation()
-    // }
-
     static contextType = ModalContext;
     
     render() {

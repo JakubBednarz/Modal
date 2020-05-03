@@ -25,7 +25,7 @@ class Modal extends React.Component {
           }
     };
 
-    static contextType = ModalContext; // tego byc nie musi?
+    static contextType = ModalContext;
 
     render () {
         const displayModal = this.state.isOpen ? "flex" : "none";
